@@ -1,17 +1,16 @@
 package gui;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class MainWindow extends Application{
 	
-	Stage mainWindow;
-	Scene sceneDefault, sceneFB, sceneMail, sceneTwitter;
-	Button buttonFB, buttonMail, buttonTwitter;
+	Stage windowMain;
+	Scene sceneDefault, sceneMail, sceneFB, sceneTwitter;
+	Button buttonDefault, buttonFB, buttonMail, buttonTwitter, buttonSettings;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -19,18 +18,38 @@ public class MainWindow extends Application{
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		mainWindow = primaryStage;
-		mainWindow.setTitle("Bom Dia Academia");
+		windowMain = primaryStage;
+		windowMain.setTitle("Bom Dia Academia");
+
+		//Botões
+		buttonDefault = new Button("Home");
+		buttonDefault.setOnAction(e -> windowMain.setScene(sceneDefault));
+		
+		buttonMail = new Button("Mail");
+		buttonMail.setOnAction(e -> windowMain.setScene(sceneMail));
 		
 		buttonFB = new Button("FaceBook");
-		buttonFB.setOnAction(e -> System.out.println("asdf"));
+		buttonFB.setOnAction(e -> windowMain.setScene(sceneFB));
 		
-		StackPane layout = new StackPane();
+		buttonTwitter = new Button("Twitter");
+		buttonTwitter.setOnAction(e -> windowMain.setScene(sceneTwitter));
+		
+		buttonSettings = new Button("Settings");
+		buttonSettings.setOnAction(e -> SettingsWindow.openSettings());
+		
+		
+		
+		HBox layout = new HBox(10);
+		layout.getChildren().add(buttonDefault);
 		layout.getChildren().add(buttonFB);
+		layout.getChildren().add(buttonMail);
+		layout.getChildren().add(buttonTwitter);
+		layout.getChildren().add(buttonSettings);
+		layout.setAlignment(Pos.TOP_CENTER);
 		
 		sceneDefault = new Scene(layout, 1000, 600);
-		primaryStage.setScene(sceneDefault);
-		primaryStage.show();
+		windowMain.setScene(sceneDefault);
+		windowMain.show();
 	}
 
 }
