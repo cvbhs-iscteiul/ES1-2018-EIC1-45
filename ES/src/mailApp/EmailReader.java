@@ -55,7 +55,7 @@ public class EmailReader {
 	public static void main(String[] args) {
 
 		String receiverEmail = "xxxxx@iscte-iul.pt";
-		String receiverPassword = "xxxxxxx";
+		String receiverPassword = "xxxxxx";
 
 		EmailReader read = new EmailReader(receiverEmail, receiverPassword);
 		read.getMail();

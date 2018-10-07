@@ -59,7 +59,7 @@ public class EmailSender {
 	public static void main(String[] args) {
 
 		String senderEmail = "xxx@iscte-iul.pt";
-		String senderPassword = "xxxxxx";
+		String senderPassword = "xxxxx";
 
 		String receiverEmail = "xxx@iscte-iul.pt";
 		String emailSubject = "This is a test email subject";
