@@ -15,8 +15,8 @@ public class EmailSender {
 	private String receiverEmail;
 	private String emailSubject;
 	private String emailBody;
-	private String senderEmail = "aacpt@iscte-iul.pt";
-	private String senderPassword = "Atno@iscte";
+	private String senderEmail;
+	private String senderPassword;
 
 	public EmailSender(String receiverEmail, String emailSubject, String emailBody, String senderEmail,
 			String senderPassword) {
