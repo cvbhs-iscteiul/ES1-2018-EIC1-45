@@ -35,7 +35,7 @@ public class EmailReader {
 			Message messages[] = emailFolder.getMessages();
 
 			// Só vejo as 3 primeiras
-			for (int i = messages.length - 3; i < messages.length; i++) {
+			for (int i = messages.length - 20; i < messages.length; i++) {
 				Message message = messages[i];
 				System.out.println("Email Number: " + (i + 1));
 				System.out.println("Subject: " + message.getSubject());
@@ -55,7 +55,7 @@ public class EmailReader {
 	public static void main(String[] args) {
 
 		String receiverEmail = "xxxxx@iscte-iul.pt";
-		String receiverPassword = "xxxxxx";
+		String receiverPassword = "xxxxxxxx";
 
 		EmailReader read = new EmailReader(receiverEmail, receiverPassword);
 		read.getMail();
