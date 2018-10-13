@@ -1,19 +1,19 @@
 package gui;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class SettingsWindow {
+public class WindowSettings {
 	
 	
 	static private Scene sceneMailSettings/*, sceneFBSettings, sceneTwitterSettings*/;
-	static private int HEIGHT = 400, WIDTH = 800;
-	
 	public static void openSettings() {
 		//Stage
 		Stage windowSettings = new Stage();
@@ -29,10 +29,14 @@ public class SettingsWindow {
 		windowSettings.showAndWait();
 	}
 	
-	public Node getSettingsLeftButtons() {
+	public static Node getSettingsLeftButtons() {
 		VBox settingsLeftButtons = new VBox(10);
-		
-		
+		settingsLeftButtons.setPadding(new Insets(10));
+		settingsLeftButtons.setAlignment(Pos.CENTER_LEFT);
+		Button buttonMail = new Button("Mail");
+		Button buttonFB = new Button("Facebook");
+		Button buttonTwitter = new Button("Twitter");
+		settingsLeftButtons.getChildren().addAll(buttonFB, buttonMail, buttonTwitter);
 		
 		return settingsLeftButtons;
 	}

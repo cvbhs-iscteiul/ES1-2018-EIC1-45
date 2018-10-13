@@ -19,17 +19,15 @@ public class WindowMain extends Application {
 
 	private static Stage windowMain;
 	private static Scene sceneDefault, sceneMail/*, sceneFB, sceneTwitter*/;
-	public static int  HEIGHT = 600, WIDTH = 1000;
-	
-	public static void main(String[] args) {
-		launch(args);
-	}
+	public static final int  HEIGHT = 600, WIDTH = 1000;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// Stage
 		windowMain = primaryStage;
 		windowMain.setTitle("Bom Dia Academia");
+		windowMain.setMinHeight(300);
+		windowMain.setMinWidth(400);
 
 		// Scenes
 		sceneMakeDefault();
@@ -66,7 +64,7 @@ public class WindowMain extends Application {
 //		buttonTwitter.setOnAction(e -> windowMain.setScene(sceneTwitter));
 
 		Button buttonSettings = new Button("Settings");
-		buttonSettings.setOnAction(e -> SettingsWindow.openSettings());
+		buttonSettings.setOnAction(e -> WindowSettings.openSettings());
 		
 		BorderPane buttonsTop = new BorderPane();
 		buttonsTop.setPadding(new Insets(10));
@@ -83,12 +81,12 @@ public class WindowMain extends Application {
 		return buttonsTop;
 	}
 
-	public static double getDefaultHeight(){
-		return sceneDefault.heightProperty().get();
+	public static double getCurrentHeight(){
+		return windowMain.sceneProperty().get().getHeight();
 	}
 	
-	public static double getDefaultWidth(){
-		return sceneDefault.widthProperty().get();
+	public static double getCurrentWidth(){
+		return windowMain.sceneProperty().get().getWidth();
 	}
 	
 }

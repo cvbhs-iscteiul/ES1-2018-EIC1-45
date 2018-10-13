@@ -37,7 +37,7 @@ public class SceneMail {
 		optionsAndContent.getChildren().addAll(buttonsOptionsEmail(listEmails, bodyEmail), bodyEmail);
 		frame.setCenter(optionsAndContent);
 		
-		return new Scene(frame, WindowMain.getDefaultWidth(), WindowMain.getDefaultHeight());
+		return new Scene(frame, WindowMain.getCurrentWidth(), WindowMain.getCurrentHeight());
 		
 	}
 	
@@ -76,7 +76,7 @@ public class SceneMail {
 		optionsEmail.setAlignment(Pos.BASELINE_LEFT);
 		
 		Button buttonReply = new Button("Reply");
-//		buttonReply.setOnAction(e -> ); //permitir escrita no textarea? abrir outra janela?
+		buttonReply.setOnAction(e -> WindowMailReply.openReply()); //permitir escrita no textarea? abrir outra janela?
 		
 		//refresh
 		Button buttonRefresh = new Button("Refresh");
