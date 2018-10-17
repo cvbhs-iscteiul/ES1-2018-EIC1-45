@@ -55,7 +55,8 @@ public class WindowMain extends Application {
 
 	static Node buttonsTop() {
 		Button buttonMail = new Button("Mail");
-		buttonMail.setOnAction(e -> windowMain.setScene(sceneMail));
+		buttonMail.setOnAction(e -> {
+			windowMain.setScene(sceneMail);});
 
 		Button buttonFB = new Button("FaceBook");
 //		buttonFB.setOnAction(e -> windowMain.setScene(sceneFB));
@@ -81,12 +82,21 @@ public class WindowMain extends Application {
 		return buttonsTop;
 	}
 
-	public static double getCurrentHeight(){
-		return windowMain.sceneProperty().get().getHeight();
-	}
-	
-	public static double getCurrentWidth(){
-		return windowMain.sceneProperty().get().getWidth();
-	}
+//	public static double getCurrentHeight(){
+//		try {
+//		return windowMain.getScene().getHeight();			
+//		} catch (Exception e) {
+//			return HEIGHT;
+//		}
+//	}
+//	
+//	public static double getCurrentWidth(){
+//		try {
+//			return windowMain.getScene().getWidth();		
+//		} catch (Exception e) {
+//			System.out.println("sdfgsdfg");
+//			return WIDTH;
+//		}
+//	}
 	
 }

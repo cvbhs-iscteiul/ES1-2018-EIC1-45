@@ -5,7 +5,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -19,6 +18,9 @@ public class WindowSettings {
 		Stage windowSettings = new Stage();
 		windowSettings.setTitle("Settings");
 		windowSettings.initModality(Modality.APPLICATION_MODAL);
+		windowSettings.setHeight(145);
+		windowSettings.setWidth(335);
+		windowSettings.setResizable(false);
 
 		sceneMailSettings = SettingsMail.getScene();
 //		sceneFBSettings = sceneFBSettings.getScene;
@@ -36,7 +38,7 @@ public class WindowSettings {
 		Button buttonMail = new Button("Mail");
 		Button buttonFB = new Button("Facebook");
 		Button buttonTwitter = new Button("Twitter");
-		settingsLeftButtons.getChildren().addAll(buttonFB, buttonMail, buttonTwitter);
+		settingsLeftButtons.getChildren().addAll(buttonMail, buttonFB, buttonTwitter);
 		
 		return settingsLeftButtons;
 	}

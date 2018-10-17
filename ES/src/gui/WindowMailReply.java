@@ -11,9 +11,11 @@ import javafx.stage.Stage;
 
 public class WindowMailReply {
 
+	private static Stage windowMailReply;
+	
 	public static void openReply() { // deve receber o numero do email para poder responder
 		// Stage
-		Stage windowMailReply = new Stage();
+		windowMailReply = new Stage();
 		windowMailReply.setTitle("Reply window");
 		windowMailReply.initModality(Modality.APPLICATION_MODAL);
 
@@ -37,13 +39,14 @@ public class WindowMailReply {
 		buttonSend.setOnAction(e -> sendReply(bodyReply.getText()));
 		
 		
-		frame.getChildren().addAll(buttonSend, bodyReply);
+		frame.getChildren().addAll(bodyReply, buttonSend);
 		
 		return new Scene(frame, 600, 500);
 	}
 
 	private static void sendReply(String replyText) { //ir buscar o texto e remetente
 		// TODO Auto-generated method stub
+		windowMailReply.close();
 	}
 
 }

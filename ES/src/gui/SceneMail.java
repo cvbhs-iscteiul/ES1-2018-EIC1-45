@@ -1,5 +1,6 @@
 package gui;
 
+
 import java.util.ArrayList;
 
 import javafx.geometry.Insets;
@@ -8,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -37,14 +39,11 @@ public class SceneMail {
 		optionsAndContent.getChildren().addAll(buttonsOptionsEmail(listEmails, bodyEmail), bodyEmail);
 		frame.setCenter(optionsAndContent);
 		
-		return new Scene(frame, WindowMain.getCurrentWidth(), WindowMain.getCurrentHeight());
+		return new Scene(frame, WindowMain.WIDTH, WindowMain.HEIGHT);
 		
 	}
 	
 	private static void setEmailList(ListView<String> listEmails, TextArea bodyEmail) {
-//		if() //user not authenticated
-//			return;
-		
 		if (listEmails.getItems() != null)
 			listEmails.getItems().clear();
 		listEmails.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> {
@@ -54,7 +53,7 @@ public class SceneMail {
 		ArrayList<String> arrayListEmails = new ArrayList<>();//Mail.getEmailList(); 
 		//temp enquanto nao ha funçao do mail
 		for (int i = 0; i < 26; i++) {
-			arrayListEmails.add("Email " + i );
+			arrayListEmails.add("Título do emailLOOOOONGOOOOOOOOOOOO " + i + " 25/02/2018\nRemetente");
 		}
 		for (String email : arrayListEmails) {
 			listEmails.getItems().add(email);
@@ -82,7 +81,13 @@ public class SceneMail {
 		Button buttonRefresh = new Button("Refresh");
 		buttonRefresh.setOnAction(e -> setEmailList(listEmails, bodyEmail)); 
 		
-		optionsEmail.getChildren().addAll(buttonReply, buttonRefresh);
+		//filters
+		TextField textFilter = new TextField();
+		textFilter.setPromptText("Filters");
+		Button buttonFilter = new Button("Apply");
+//		buttonFilter.setOnAction(e -> );
+		
+		optionsEmail.getChildren().addAll(buttonReply, buttonRefresh, textFilter, buttonFilter);
 		return optionsEmail;
 	}
 	

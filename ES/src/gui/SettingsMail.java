@@ -1,7 +1,6 @@
 package gui;
 
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,7 +8,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 
 public class SettingsMail {
 
@@ -32,20 +30,17 @@ public class SettingsMail {
 		GridPane.setConstraints(labelPassword, 0, 1);
 		GridPane.setConstraints(textEmail, 1, 0);
 		GridPane.setConstraints(textPassword, 1, 1);
+		GridPane.setConstraints(buttonConfirm, 1, 2);
 		paneSettings.getChildren().add(labelEmail);
 		paneSettings.getChildren().add(labelPassword);
 		paneSettings.getChildren().add(textEmail);
 		paneSettings.getChildren().add(textPassword);
+		paneSettings.getChildren().add(buttonConfirm);
 		
 		
 		frame.setCenter(paneSettings);
-		HBox paneConfirm = new HBox(10);
-		paneConfirm.setPadding(new Insets(10));
-		paneConfirm.getChildren().add(buttonConfirm);
-		paneConfirm.setAlignment(Pos.BOTTOM_RIGHT);
-		frame.setBottom(paneConfirm);
 		
-		return new Scene(frame, 600, 400);
+		return new Scene(frame);
 	}
 
 }
