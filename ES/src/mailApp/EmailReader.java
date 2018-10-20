@@ -17,12 +17,35 @@ import javax.mail.internet.ContentType;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMultipart;
 
+/**
+ * Date: 20/10/2018 
+ * Aplicação para ler emails na consola
+ * @author António Teixeira
+ * @version 1.02
+ *
+ */
+
 public class EmailReader {
 
+	/**
+	 * Valor String para o endereço de email de quem recebe
+	 */
 	private String receiverEmail;
+	/**
+	 * Valor String para a password do email de quem recebe
+	 */
 	private String receiverPassword;
+	/**
+	 * Lista de emails recebidos (a aplicar no futuro)
+	 */
 	private ArrayList<Mail> mails;
 
+	/**
+	 * Construtor da classe EmailReader
+	 * 
+	 * @param receiverEmail    primeiro argumento String
+	 * @param receiverPassword segundo argumento String
+	 */
 	public EmailReader(String receiverEmail, String receiverPassword) {
 		this.receiverEmail = receiverEmail;
 		this.receiverPassword = receiverPassword;
@@ -33,7 +56,10 @@ public class EmailReader {
 		return mails;
 	}
 
-	private void getMail() {
+	/**
+	 * Método que mostra na consola as 3 ultimas mensagens da caixa do correio
+	 */
+	public void getMail() {
 		try {
 			Properties props = System.getProperties();
 			props.setProperty("mail.store.protocol", "imaps");
@@ -54,7 +80,7 @@ public class EmailReader {
 
 			for (int i = messages.length - 4; i < messages.length; i++) {
 				Message message = messages[i];
-				Address[] froms = message.getFrom(); //melhor maneira de extrair os endereços de quem enviou emails
+				Address[] froms = message.getFrom(); // melhor maneira de extrair os endereços de quem enviou emails
 				System.out.println("Email Number: " + (i + 1));
 				String subject = message.getSubject();
 				System.out.println("Subject: " + message.getSubject());
@@ -79,7 +105,18 @@ public class EmailReader {
 		}
 	}
 
-	private String getTextFromMessage(Message message) throws IOException, MessagingException {
+	/**
+	 * Método auxiliar do getMail() que devolve o texto da mensagem de mail caso
+	 * seja do tipo Mime.
+	 * 
+	 * @param message argumento do tipo Message.
+	 * @return Devolve uma String que corresponde ao texto da mensagem de email.
+	 * @throws IOException        envia a exceção do tipo IOException para quem
+	 *                            chama o método.
+	 * @throws MessagingException envia a exceção do tipo MessagingException para
+	 *                            quem chama o método.
+	 */
+	public String getTextFromMessage(Message message) throws IOException, MessagingException {
 		String result = "";
 		if (message.isMimeType("text/plain")) {
 			result = message.getContent().toString();
@@ -90,14 +127,25 @@ public class EmailReader {
 		return result;
 	}
 
-	private String getTextFromMimeMultipart(MimeMultipart mimeMultipart) throws IOException, MessagingException {
+	/**
+	 * Método auxiliar do getTextFromMessage() que devolve o texto da mensagem de
+	 * mail caso seja do tipo mimeMultipart.
+	 * 
+	 * @param mimeMultipart argumento do tipo mimeMultipart
+	 * @return Devolve uma String que corresponde ao texto da mensagem de email
+	 * @throws IOException        envia a exceção do tipo IOException para quem
+	 *                            chama o método.
+	 * @throws MessagingException envia a exceção do tipo MessagingException para
+	 *                            quem chama o método.
+	 */
+	public String getTextFromMimeMultipart(MimeMultipart mimeMultipart) throws IOException, MessagingException {
 
 		int count = mimeMultipart.getCount();
 		if (count == 0)
 			throw new MessagingException("Multipart with no body parts not supported.");
 		boolean multipartAlt = new ContentType(mimeMultipart.getContentType()).match("multipart/alternative");
 		if (multipartAlt)
-			// alternatives appear in an order of increasing
+			// alternativas aparecem pela ordem crescente
 			// faithfulness to the original content. Customize as req'd.
 			return getTextFromBodyPart(mimeMultipart.getBodyPart(count - 1));
 		String result = "";
@@ -108,8 +156,18 @@ public class EmailReader {
 		return result;
 	}
 
-	private String getTextFromBodyPart(BodyPart bodyPart) throws IOException, MessagingException {
-
+	/**
+	 * Método auxiliar de getTextFromMimeMultipart() que devolve o texto da mensagem
+	 * de email caso seja do tipo multipartAlt
+	 * 
+	 * @param bodyPart argumento do tipo bodyPart
+	 * @return Devolve uma String que corresponde ao texto da mensagem de email
+	 * @throws IOException        envia a exceção do tipo IOException para quem
+	 *                            chama o método.
+	 * @throws MessagingException envia a exceção do tipo MessagingException para
+	 *                            quem chama o método.
+	 */
+	public String getTextFromBodyPart(BodyPart bodyPart) throws IOException, MessagingException {
 		String result = "";
 		if (bodyPart.isMimeType("text/plain")) {
 			result = (String) bodyPart.getContent();
@@ -122,6 +180,10 @@ public class EmailReader {
 		return result;
 	}
 
+	/**
+	 * Método Main desta classe que serve para testar as funcionalidades da mesma 
+	 * @param args String de argumentos
+	 */
 	public static void main(String[] args) {
 
 		String receiverEmail = "es1_2018_45@outlook.pt";
