@@ -124,8 +124,8 @@ public class EmailReader {
 
 	public static void main(String[] args) {
 
-		String receiverEmail = "xxxxx@iscte-iul.pt";
-		String receiverPassword = "xxxxxx";
+		String receiverEmail = "es1_2018_45@outlook.pt";
+		String receiverPassword = "isctegrupo45";
 
 		EmailReader read = new EmailReader(receiverEmail, receiverPassword);
 		read.getMail();
