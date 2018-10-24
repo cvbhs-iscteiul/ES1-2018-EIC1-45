@@ -13,6 +13,8 @@ public class WindowMailReply {
 
 	private static Stage windowMailReply;
 	
+	/** Class that creates a window to reply to an email
+	 * */
 	public static void openReply() { // deve receber o numero do email para poder responder
 		// Stage
 		windowMailReply = new Stage();

@@ -1,5 +1,8 @@
 package gui;
 
+/**
+ * Class that is connected to all other GUI classes
+ */
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import javafx.application.Application;
@@ -18,7 +21,7 @@ import javafx.stage.Stage;
 public class WindowMain extends Application {
 
 	private static Stage windowMain;
-	private static Scene sceneDefault, sceneMail/*, sceneFB, sceneTwitter*/;
+	private static Scene sceneDefault, sceneMail, sceneFB, sceneTwitter;
 	public static final int  HEIGHT = 600, WIDTH = 1000;
 
 	@Override
@@ -31,13 +34,15 @@ public class WindowMain extends Application {
 
 		// Scenes
 		sceneMakeDefault();
-		sceneMail = SceneMail.getSceneMail();
+		sceneMail = SceneMail.getScene();
+		sceneTwitter = SceneTwitter.getScene();
+		
 
 		// Stage Show
 		windowMain.setScene(sceneDefault);
 		windowMain.show();
 	}
-
+	
 	private void sceneMakeDefault() {
 		BorderPane frame = new BorderPane();
 		frame.setTop(buttonsTop());
@@ -52,7 +57,10 @@ public class WindowMain extends Application {
 
 		sceneDefault = new Scene(frame, WIDTH, HEIGHT);
 	}
-
+	
+	/**Creates the top buttons that are used for all scenes
+	 * @return BorderPane with all the buttons on top
+	 * */
 	static Node buttonsTop() {
 		Button buttonMail = new Button("Mail");
 		buttonMail.setOnAction(e -> {
@@ -62,7 +70,7 @@ public class WindowMain extends Application {
 //		buttonFB.setOnAction(e -> windowMain.setScene(sceneFB));
 
 		Button buttonTwitter = new Button("Twitter");
-//		buttonTwitter.setOnAction(e -> windowMain.setScene(sceneTwitter));
+		buttonTwitter.setOnAction(e -> windowMain.setScene(sceneTwitter));
 
 		Button buttonSettings = new Button("Settings");
 		buttonSettings.setOnAction(e -> WindowSettings.openSettings());

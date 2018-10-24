@@ -11,8 +11,10 @@ import javafx.stage.Stage;
 
 public class WindowSettings {
 	
-	
 	static private Scene sceneMailSettings/*, sceneFBSettings, sceneTwitterSettings*/;
+
+	/** Creates a window for the settings
+	 * */
 	public static void openSettings() {
 		//Stage
 		Stage windowSettings = new Stage();
@@ -31,6 +33,10 @@ public class WindowSettings {
 		windowSettings.showAndWait();
 	}
 	
+	
+	/** creates left side buttons that are used for all settings scenes
+	 * @return VBox with settings buttons
+	 * */
 	public static Node getSettingsLeftButtons() {
 		VBox settingsLeftButtons = new VBox(10);
 		settingsLeftButtons.setPadding(new Insets(10));

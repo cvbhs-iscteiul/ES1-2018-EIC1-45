@@ -10,7 +10,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
 public class SettingsMail {
-
+	
+	/**Scene that creates settings page for email
+	 * @return email settings page for the settings window
+	 * */
 	public static Scene getScene() {
 		BorderPane frame = new BorderPane();
 		frame.setLeft(WindowSettings.getSettingsLeftButtons());
