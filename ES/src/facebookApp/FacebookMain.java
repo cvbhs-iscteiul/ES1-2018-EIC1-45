@@ -10,7 +10,7 @@ import com.restfb.types.User;
 
 public class FacebookMain {
 	
-	String accessToken = "EAAIFIIEgfxIBAKxDeuTVL1RuDFSaXLZAyz1D0rzplzZCnDjGa43ZCX5xKyqtRwIuZCQXuXWfVZBCkCEDprFQF3ZCgvzghCr75EvNJx7WOs2KDAqn5MqcRAoj8huUqxfYN51IBOZBAdCSWhB5FZA3s2Q6r1atpxrMjZBsWhg7ZCp9RxFuDFeuvnLBUHBxZASXwrVMkCHtZAZAtJDzRhvGvwFXN9XrBE6Gc4H8faZA0ZD";
+	String accessToken = "EAAIFIIEgfxIBAHhghzXQejRISCdLblNef9b4WMIA9jdjVvobsW4HE3RGduZBuNTkR2nZC75z8FeATl3MMMyYjYXtxWlfLxVlPI6aRez4Xz5e5WqPQ9DlMSa2JATFngRmsl2BSooiHGCmVImGNnZCV2mrkxnVfwDNOMM0429tz7cZCndHtobu2x1bBuKjQd3vuZBFbyhNQxUzNuTmN6s3R0WGN0sB7UfMZD";
 	FacebookClient fbClient ;
 	User me;
 	
@@ -85,11 +85,21 @@ public class FacebookMain {
 		
 	*/
 	
+	
+	
+	
+	/**
+	 * 
+	 * Method to print what's being obtained from the current fetchConnection command.
+	 * Printing to console - Currently being used to 'debug' the API. 
+	 * 
+	 */
+	
 	public void printSys() {
 		
 
 		
-		Connection<Post> result = fbClient.fetchConnection("me?fields=feed{full_picture}",Post.class);
+		Connection<Post> result = fbClient.fetchConnection("me/feed",Post.class);
 		System.out.println("\nPosts:");
 		int counter5 = 0;
 		int counterTotal = 0;
