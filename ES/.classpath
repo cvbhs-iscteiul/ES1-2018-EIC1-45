@@ -6,6 +6,6 @@
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="/home/pc2/Downloads/javax.mail.jar"/>
+	<classpathentry kind="lib" path="src/mailApp/javax.mail.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
