@@ -18,8 +18,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMultipart;
 
 /**
- * Date: 20/10/2018 
- * Aplicação para ler emails na consola
+ * Date: 25/10/2018 Classe para ler emails na consola
+ * 
  * @author António Teixeira
  * @version 1.02
  *
@@ -76,9 +76,9 @@ public class EmailReader {
 
 //			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-			// Só vejo as 3 primeiras
+			// Aqui posso configurar o numero de mensagens mostradas.
 
-			for (int i = messages.length - 4; i < messages.length; i++) {
+			for (int i = messages.length - 3; i < messages.length; i++) {
 				Message message = messages[i];
 				Address[] froms = message.getFrom(); // melhor maneira de extrair os endereços de quem enviou emails
 				System.out.println("Email Number: " + (i + 1));
@@ -146,7 +146,6 @@ public class EmailReader {
 		boolean multipartAlt = new ContentType(mimeMultipart.getContentType()).match("multipart/alternative");
 		if (multipartAlt)
 			// alternativas aparecem pela ordem crescente
-			// faithfulness to the original content. Customize as req'd.
 			return getTextFromBodyPart(mimeMultipart.getBodyPart(count - 1));
 		String result = "";
 		for (int i = 0; i < count; i++) {
@@ -181,7 +180,8 @@ public class EmailReader {
 	}
 
 	/**
-	 * Método Main desta classe que serve para testar as funcionalidades da mesma 
+	 * Método Main desta classe que serve para testar as funcionalidades da mesma
+	 * 
 	 * @param args String de argumentos
 	 */
 	public static void main(String[] args) {

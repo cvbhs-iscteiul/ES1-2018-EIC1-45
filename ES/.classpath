@@ -9,5 +9,8 @@
 	<classpathentry kind="lib" path="/home/pc2/Downloads/javax.mail.jar"/>
 	<classpathentry kind="lib" path="/home/pc2/Downloads/jsoup-1.11.3.jar"/>
 	<classpathentry kind="lib" path="/home/pc2/ES1/projeto/junit-4.10.jar"/>
+	<classpathentry kind="lib" path="/home/pc2/ES1/projeto/greenmail-1.5.8.jar" sourcepath="/home/pc2/ES1/projeto/greenmail-1.5.8.jar"/>
+	<classpathentry kind="lib" path="/home/pc2/ES1/projeto/slf4j-api-1.7.2.jar"/>
+	<classpathentry kind="lib" path="/home/pc2/ES1/projeto/slf4j-simple-1.7.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,16 +1,14 @@
 package mailApp;
 
-
 import java.util.Date;
 
 /**
- * Date: 20/10/2018
- * Classe de objetos "Mails" a ser usada no futuro
+ * Date: 25/10/2018 Classe de objetos "Mails" a ser usada no futuro
+ * 
  * @author António Teixeira
  * @version 1.02
  * 
  */
-
 
 public class Mail {
 
@@ -19,7 +17,7 @@ public class Mail {
 	 */
 	private String receiverEmail;
 	/**
-	 * Valor String para o assunto do email 
+	 * Valor String para o assunto do email
 	 */
 	private String emailSubject;
 	/**
@@ -39,10 +37,10 @@ public class Mail {
 	 * Construtor da classe Mail
 	 * 
 	 * @param receiverEmail primeiro argumento String
-	 * @param emailSubject segundo argumento String
-	 * @param emailBody terceiro argumento String
-	 * @param senderEmail quarto argumento String
-	 * @param sentDate argumento do tipo Date
+	 * @param emailSubject  segundo argumento String
+	 * @param emailBody     terceiro argumento String
+	 * @param senderEmail   quarto argumento String
+	 * @param sentDate      argumento do tipo Date
 	 */
 	public Mail(String receiverEmail, String emailSubject, String emailBody, String senderEmail, Date sentDate) {
 		this.sentDate = sentDate;
