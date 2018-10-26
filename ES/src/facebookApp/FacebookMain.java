@@ -10,7 +10,7 @@ import com.restfb.types.User;
 
 public class FacebookMain {
 	
-	String accessToken = "EAAIFIIEgfxIBAHhghzXQejRISCdLblNef9b4WMIA9jdjVvobsW4HE3RGduZBuNTkR2nZC75z8FeATl3MMMyYjYXtxWlfLxVlPI6aRez4Xz5e5WqPQ9DlMSa2JATFngRmsl2BSooiHGCmVImGNnZCV2mrkxnVfwDNOMM0429tz7cZCndHtobu2x1bBuKjQd3vuZBFbyhNQxUzNuTmN6s3R0WGN0sB7UfMZD";
+	String accessToken = "EAAIFIIEgfxIBADggr3JFRaxgbYP1l4zdOPMmJWHCCWLXIEhZCgRh689rwyIcdRWyBXaoq6zOyqOa9g0otVn09taEumGU6m0oF2oJ3ZC16RGdedZBCmbkVXx1dqkyiI3J41gx4m8tw819P4PmCsb2BngBlUwpr4MedqHfNDBuJPCruPsIJgyl3HTnl4xKfZAFh36vq949HRYNktXy0ALF";
 	FacebookClient fbClient ;
 	User me;
 	
@@ -119,6 +119,7 @@ public class FacebookMain {
 					System.out.println("Likes: "+aPost.getLikesCount());
 					System.out.println("Comments: "+aPost.getCommentsCount());
 					System.out.println("Full Picture: "+aPost.getFullPicture());
+					System.out.println("Attachments:"+aPost.getAttachments());
 					
 					counter5++;
 				}
