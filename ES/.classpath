@@ -6,6 +6,6 @@
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/F0r Fr33/Downloads/restfb-2.11.0.jar"/>
+	<classpathentry kind="lib" path="src/facebookApp/restfb-2.11.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
