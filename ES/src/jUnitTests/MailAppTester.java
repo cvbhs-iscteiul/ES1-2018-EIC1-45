@@ -72,6 +72,9 @@ public class MailAppTester {
 	/**
 	 * Método para testar a classe MailAppTester
 	 */
+	/**
+	 * 
+	 */
 	@Test
 	public void test() {
 
@@ -151,8 +154,8 @@ public class MailAppTester {
 			e.printStackTrace();
 		}
 
-//		assertEquals(senderEmailBody, receiverEmailBody);
-		assertEquals(senderEmailSubject, receiverEmailSubject);
+		assertEquals(senderEmailBody, receiverEmailBody);
+//		assertEquals(senderEmailSubject, receiverEmailSubject);
 	}
 
 	public String getTextFromMessage(Message message) throws IOException, MessagingException {

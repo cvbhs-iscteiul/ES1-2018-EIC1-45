@@ -50,6 +50,8 @@ public class EmailReader {
 		this.receiverEmail = receiverEmail;
 		this.receiverPassword = receiverPassword;
 		mails = new ArrayList<Mail>();
+		
+		// HHH
 	}
 
 	public ArrayList<Mail> getMailList() {
