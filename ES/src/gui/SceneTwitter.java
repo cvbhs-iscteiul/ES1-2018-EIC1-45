@@ -3,6 +3,7 @@ package gui;
 
 import java.util.ArrayList;
 
+import javafx.beans.binding.Bindings;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,11 +15,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class SceneMail {
-	
-	/** Only public method of the class
-	 * @return scne for the email
-	 * */
+public class SceneTwitter{
+
 	public static Scene getScene() {
 		BorderPane frame = new BorderPane();
 		frame.setTop(WindowMain.buttonsTop());
@@ -26,27 +24,33 @@ public class SceneMail {
 		
 		//body of email and options
 		VBox optionsAndContent = new VBox(10);
-		//body of email
-		TextArea bodyEmail = new TextArea(); 
-		bodyEmail.prefWidthProperty().bind(optionsAndContent.widthProperty());
-		bodyEmail.prefHeightProperty().bind(optionsAndContent.heightProperty());
-		bodyEmail.setEditable(false);
-		bodyEmail.setWrapText(true);
-		bodyEmail.setPadding(new Insets(10, 0, 0, 10));
+		//tweet and reply
+		TextArea tweet = new TextArea();
+		tweet.setEditable(false);
+		tweet.setWrapText(true);
+		tweet.setPadding(new Insets(10, 0, 0, 10));
+		tweet.prefWidthProperty().bind(optionsAndContent.widthProperty());
+		tweet.prefHeightProperty().bind(Bindings.divide(optionsAndContent.heightProperty(), 2));
+		tweet.setWrapText(true);
+		tweet.setPadding(new Insets(0, 10, 10, 0));
+		TextArea tweetResponse = new TextArea();
+		tweetResponse.prefWidthProperty().bind(optionsAndContent.widthProperty());
+		tweetResponse.prefHeightProperty().bind(Bindings.divide(optionsAndContent.heightProperty(), 2));
+		tweetResponse.setWrapText(true);
 		
-		//left list of emails 
-		ListView<String> listEmails = new ListView<>();
-		setEmailList(listEmails, bodyEmail);
-		frame.setLeft(listEmails);
+		//left list of tweets 
+		ListView<String> listTweets = new ListView<>();
+		setTweetList(listTweets, tweet);
+		frame.setLeft(listTweets);
 		
-		optionsAndContent.getChildren().addAll(buttonsOptionsEmail(listEmails, bodyEmail), bodyEmail);
+		optionsAndContent.getChildren().addAll(buttonsOptionsEmail(listTweets, tweet), tweet, tweetResponse);
 		frame.setCenter(optionsAndContent);
 		
 		return new Scene(frame, WindowMain.WIDTH, WindowMain.HEIGHT);
 		
 	}
 	
-	private static void setEmailList(ListView<String> listEmails, TextArea bodyEmail) {
+	private static void setTweetList(ListView<String> listEmails, TextArea bodyEmail) {
 		if (listEmails.getItems() != null)
 			listEmails.getItems().clear();
 		listEmails.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> {
@@ -56,7 +60,7 @@ public class SceneMail {
 		ArrayList<String> arrayListEmails = new ArrayList<>();//Mail.getEmailList(); 
 		//temp enquanto nao ha funçao do mail
 		for (int i = 0; i < 26; i++) {
-			arrayListEmails.add("Título do emailLOOOOONGOOOOOOOOOOOO " + i + " 25/02/2018\nRemetente");
+			arrayListEmails.add("Título do tweet LOOOOONGOOOOOOOOOOOO " + i + " 25/02/2018\nRemetente");
 		}
 		for (String email : arrayListEmails) {
 			listEmails.getItems().add(email);
@@ -67,22 +71,22 @@ public class SceneMail {
 	private static String funcGetTextMail(int selectedIndex) { // funcao para imitar a que se vai usar da classe do email
 		String body = "";
 		for (int i = 0; i < 36; i++) {
-			body += "corpo do email" + selectedIndex + " ";
+			body += "corpo do tweet" + selectedIndex + " ";
 		}
 		return body;
 	}
 
-	private static HBox buttonsOptionsEmail(ListView<String> listEmails, TextArea bodyEmail) {
+	private static HBox buttonsOptionsEmail(ListView<String> listTweets, TextArea tweet) {
 		HBox optionsEmail = new HBox(10);
 		optionsEmail.setPadding(new Insets(0, 0, 0, 10));
 		optionsEmail.setAlignment(Pos.BASELINE_LEFT);
 		
 		Button buttonReply = new Button("Reply");
-		buttonReply.setOnAction(e -> WindowMailReply.openReply()); //permitir escrita no textarea? abrir outra janela?
+//		buttonReply.setOnAction(e -> ); //responde diretamente
 		
 		//refresh
 		Button buttonRefresh = new Button("Refresh");
-		buttonRefresh.setOnAction(e -> setEmailList(listEmails, bodyEmail)); 
+		buttonRefresh.setOnAction(e -> setTweetList(listTweets, tweet)); 
 		
 		//filters
 		TextField textFilter = new TextField();

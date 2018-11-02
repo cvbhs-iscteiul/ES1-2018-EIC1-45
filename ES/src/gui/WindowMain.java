@@ -1,5 +1,8 @@
 package gui;
 
+/**
+ * Class that is connected to all other GUI classes
+ */
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import javafx.application.Application;
@@ -18,28 +21,28 @@ import javafx.stage.Stage;
 public class WindowMain extends Application {
 
 	private static Stage windowMain;
-	private static Scene sceneDefault, sceneMail/*, sceneFB, sceneTwitter*/;
-	public static int  HEIGHT = 600, WIDTH = 1000;
-	
-	public static void main(String[] args) {
-		launch(args);
-	}
+	private static Scene sceneDefault, sceneMail, sceneFB, sceneTwitter;
+	public static final int  HEIGHT = 600, WIDTH = 1000;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// Stage
 		windowMain = primaryStage;
 		windowMain.setTitle("Bom Dia Academia");
+		windowMain.setMinHeight(300);
+		windowMain.setMinWidth(400);
 
 		// Scenes
 		sceneMakeDefault();
-		sceneMail = SceneMail.getSceneMail();
+		sceneMail = SceneMail.getScene();
+		sceneTwitter = SceneTwitter.getScene();
+		
 
 		// Stage Show
 		windowMain.setScene(sceneDefault);
 		windowMain.show();
 	}
-
+	
 	private void sceneMakeDefault() {
 		BorderPane frame = new BorderPane();
 		frame.setTop(buttonsTop());
@@ -54,19 +57,23 @@ public class WindowMain extends Application {
 
 		sceneDefault = new Scene(frame, WIDTH, HEIGHT);
 	}
-
+	
+	/**Creates the top buttons that are used for all scenes
+	 * @return BorderPane with all the buttons on top
+	 * */
 	static Node buttonsTop() {
 		Button buttonMail = new Button("Mail");
-		buttonMail.setOnAction(e -> windowMain.setScene(sceneMail));
+		buttonMail.setOnAction(e -> {
+			windowMain.setScene(sceneMail);});
 
 		Button buttonFB = new Button("FaceBook");
 //		buttonFB.setOnAction(e -> windowMain.setScene(sceneFB));
 
 		Button buttonTwitter = new Button("Twitter");
-//		buttonTwitter.setOnAction(e -> windowMain.setScene(sceneTwitter));
+		buttonTwitter.setOnAction(e -> windowMain.setScene(sceneTwitter));
 
 		Button buttonSettings = new Button("Settings");
-		buttonSettings.setOnAction(e -> SettingsWindow.openSettings());
+		buttonSettings.setOnAction(e -> WindowSettings.openSettings());
 		
 		BorderPane buttonsTop = new BorderPane();
 		buttonsTop.setPadding(new Insets(10));
@@ -83,12 +90,21 @@ public class WindowMain extends Application {
 		return buttonsTop;
 	}
 
-	public static double getDefaultHeight(){
-		return sceneDefault.heightProperty().get();
-	}
-	
-	public static double getDefaultWidth(){
-		return sceneDefault.widthProperty().get();
-	}
+//	public static double getCurrentHeight(){
+//		try {
+//		return windowMain.getScene().getHeight();			
+//		} catch (Exception e) {
+//			return HEIGHT;
+//		}
+//	}
+//	
+//	public static double getCurrentWidth(){
+//		try {
+//			return windowMain.getScene().getWidth();		
+//		} catch (Exception e) {
+//			System.out.println("sdfgsdfg");
+//			return WIDTH;
+//		}
+//	}
 	
 }
